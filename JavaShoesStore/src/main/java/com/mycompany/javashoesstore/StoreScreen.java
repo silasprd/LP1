@@ -15,13 +15,8 @@ import javax.swing.JOptionPane;
  * @author itaxxi
  */
 public class StoreScreen extends javax.swing.JFrame {
-    
-    ArrayList<JavaShoesStore> shoes = new ArrayList<JavaShoesStore>();
-    
-    HashSet<String> codesShoes = new HashSet<String>();
-    
+
     HashMap<String, String> shoesMap = new HashMap<String, String>();
-    
 
     /**
      * Creates new form StoreScreen
@@ -140,33 +135,35 @@ public class StoreScreen extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
-        JavaShoesStore shoe = new JavaShoesStore("", "", "", "");
+        JavaShoesStore shoeStore = new JavaShoesStore();
+        JavaShoes shoe = new JavaShoes("", "", "", "");
+
         shoe.setMarca(tfMarca.getText());
         shoe.setModelo(tfModelo.getText());
         shoe.setCor(tfCor.getText());
         shoe.setCodigo(tfCodigo.getText());
-        
-        String txtShoe = tfMarca.getText() + " " + tfModelo.getText() + " " + tfCor.getText();
-        
-        shoes.add(shoe);
-        codesShoes.add(shoe.getCodigo());
+
+        String txtShoe = shoe.getMarca() + " " + shoe.getModelo() + " " + shoe.getCor();
+
+        shoeStore.addShoes(shoe);
+        shoeStore.addHash(shoe.getCodigo());
         shoesMap.put(shoe.getCodigo(), txtShoe);
-        
+
         tfMarca.setText("");
         tfModelo.setText("");
         tfCor.setText("");
         tfCodigo.setText("");
-        
+
         JFrame sucessMsg = new JFrame();
         JOptionPane.showMessageDialog(sucessMsg, "Tênis cadastrado com sucesso!!");
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnSearchCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchCodeActionPerformed
         // TODO add your handling code here:
+        JavaShoesStore shoeStore = new JavaShoesStore();
         JFrame jFrame = new JFrame();
-        String value = tfSearchCode.getText();
-        JOptionPane.showMessageDialog(jFrame,("" + shoesMap.get(value)));
-        //tfSearchCode.setText("");
+        JOptionPane.showMessageDialog(jFrame,("" + shoesMap.get(tfSearchCode.getText())));
+        tfSearchCode.setText("");
     }//GEN-LAST:event_btnSearchCodeActionPerformed
 
     /**

@@ -5,67 +5,49 @@
 
 package com.mycompany.javashoesstore;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+
 /**
  *
  * @author itaxxi
  */
 public class JavaShoesStore {
     
-    private String marca;
-    private String modelo;
-    private String cor;
-    private String codigo;
-   
+
+    private ArrayList<JavaShoes> arrayShoes = new ArrayList<JavaShoes>();
+    private HashSet<String> hashShoes = new HashSet<String>();
+    private HashMap<String, String> mapShoes = new HashMap<String, String>();
+
     //construtor
-    public JavaShoesStore(String marca, String modelo, String cor, String codigo){
-        this.marca = marca;
-        this.modelo = modelo;
-        this.cor = cor;
-        this.codigo = codigo;
+
+    public void addShoes(JavaShoes shoe){
+        this.arrayShoes.add(shoe);
     }
-      
-    //métodos de acesso
-    public String getMarca() {
-        return marca;
+    public void addHash(String code){
+        this.hashShoes.add(code);
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void addMap(String code, String shoe){
+        this.mapShoes.put(code, shoe);
     }
 
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
-
-    public String getCor() {
-        return cor;
-    }
-
-    public void setCor(String cor) {
-        this.cor = cor;
-    }
-    
-    public String getCodigo() {
-        return codigo;
-    }
-    
-    public void setCodigo(String codigo){
-        this.codigo = codigo;
+    public ArrayList<JavaShoes> getList(){
+        return arrayShoes;
     }
 
     public static void main(String[] args) {
-        System.out.println("Java Shoes");
-        JavaShoesStore shoe = new JavaShoesStore("", "", "", "");
-         
-        shoe.setMarca("Nike");
-        shoe.setModelo("Air Jordan");
-        shoe.setCor("Preto/Vermelho");
-        shoe.setCodigo("12345");
-        
-        System.out.println(shoe.getCodigo() + " - " + shoe.getMarca() + " " + shoe.getModelo() + " " + shoe.getCor());
+        JavaShoesStore store = new JavaShoesStore();
+        JavaShoes shoeOb = new JavaShoes("dc", "penza", "preto", "99");
+
+        store.addShoes(new JavaShoes("nike", "air", "preto", "90"));
+        store.addShoes(new JavaShoes("adidas", "court", "branco", "80"));
+        store.addMap(shoeOb.getCodigo(), shoeOb.getInfo());
+        System.out.println("qualquer coisa");
+
+        for (JavaShoes shoe: store.getList()){
+            System.out.println(shoe.getInfo());
+        }
     }
 }
