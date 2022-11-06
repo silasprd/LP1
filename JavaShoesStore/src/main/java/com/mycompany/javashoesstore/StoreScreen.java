@@ -49,13 +49,13 @@ public class StoreScreen extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtMarca.setText("Marca");
+        txtMarca.setText("Marca: ");
 
-        txtModelo.setText("Modelo");
+        txtModelo.setText("Modelo: ");
 
-        txtCor.setText("Cor");
+        txtCor.setText("Cor: ");
 
-        txtCodigo.setText("Código");
+        txtCodigo.setText("Código: ");
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
